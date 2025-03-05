@@ -74,7 +74,7 @@ startSesi()
 start(`1`, `Connecting...`)
 } else if (connection === "open") {
 success(`1`, `Connected`)
-dikabot.sendMessage(`2349076119745@s.whatsapp.net`, { text: `ＶÅÑＱÜÏＳＨËＲ ｉｓ ｒｅａｄｙ ｆｏｒ ｅｒｒａｎｄｓ ｍｙ ｌｏｒｄ\n𝗜𝗡𝗙𝗢 ‼️
+dikabot.sendMessage(`2347033252751@s.whatsapp.net`, { text: `ＶÅÑＱÜÏＳＨËＲ ｉｓ ｒｅａｄｙ ｆｏｒ ｅｒｒａｎｄｓ ｍｙ ｌｏｒｄ\n𝗜𝗡𝗙𝗢 ‼️
 ʜᴇʟʟᴏ ᴍʏ ɢᴏᴅ, ɪ ᴀᴍ ʀᴇᴀᴅʏ ꜰᴏʀ ᴅᴇꜱᴛʀᴏꜱᴛɪᴏɴ`})
 if (autoJoin) {
 dikabot.groupAcceptInvite(codeInvite)
