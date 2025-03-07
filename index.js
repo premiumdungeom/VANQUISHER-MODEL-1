@@ -43,8 +43,14 @@ YouTube : @coming soon
 
   if (usePairingCode && !dikabot.authState.creds.registered) {
     console.log("Requesting pairing code...");
-    const code = await dikabot.requestPairingCode(YOUR_NUMBER); // Automatically use your number
-    console.log(chalk.green(`Enter the code into WhatsApp: ${code}`));
+    try {
+      const code = await dikabot.requestPairingCode(YOUR_NUMBER); // Automatically use your number
+      console.log(chalk.green(`Enter the code into WhatsApp: ${code}`));
+    } catch (err) {
+      console.error(chalk.red("Error requesting pairing code:", err));
+      console.log(chalk.yellow("Restarting bot..."));
+      await startSesi(); // Restart the bot
+    }
   }
 
   store.bind(dikabot.ev);
