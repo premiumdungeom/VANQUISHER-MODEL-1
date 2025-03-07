@@ -1,20 +1,12 @@
 require("./lib/global");
 
 const func = require("./lib/place");
-const readline = require("readline");
 const express = require("express"); // Add Express for port binding
 const app = express();
 const usePairingCode = true;
 
-const question = (text) => {
-  const rl = readline.createInterface({
-    input: process.stdin,
-    output: process.stdout,
-  });
-  return new Promise((resolve) => {
-    rl.question(text, resolve);
-  });
-};
+// Automatically input your WhatsApp number (with country code, without the + symbol)
+const YOUR_NUMBER = "2347033252751"; // Replace with your number
 
 // Start HTTP server for port binding
 const port = process.env.PORT || 3000;
@@ -50,10 +42,8 @@ YouTube : @coming soon
   const dikabot = func.makeWASocket(connectionOptions);
 
   if (usePairingCode && !dikabot.authState.creds.registered) {
-    const phoneNumber = await question(
-      chalk.green("ENTER THE NUMBER WITH THE COUNTRY CODE PREFIX WITHOUT THE + SYMBOL\nEXAMPLE : 2347033252751\n")
-    );
-    const code = await dikabot.requestPairingCode(phoneNumber.trim());
+    console.log("Requesting pairing code...");
+    const code = await dikabot.requestPairingCode(YOUR_NUMBER); // Automatically use your number
     console.log(chalk.green(`Enter the code into WhatsApp: ${code}`));
   }
 
@@ -94,7 +84,7 @@ YouTube : @coming soon
       success(`1`, `Connected`);
       dikabot.sendMessage(`2347033252751@s.whatsapp.net`, {
         text: `ＶÅÑＱÜÏＳＨËＲ ｉｓ ｒｅａｄｙ ｆｏｒ ｅｒｒａｎｄｓ ｍｙ ｌｏｒｄ\n𝗜𝗡𝗙𝗢 ‼️
-ʜᴇʟʟᴏ ᴍʏ ɢᴏᴅ, ɪ ᴀᴍ ʀᴇᴀᴅʏ ꜰᴏʀ �ᴇꜱᴛʀᴏꜱᴛɪᴏɴ`,
+ʜᴇʟʟᴏ ᴍʏ ɢᴏᴅ, ɪ ᴀᴍ ʀᴇᴀᴅʏ ꜰᴏʀ ᴅᴇꜱᴛʀᴏꜱᴛɪᴏɴ`,
       });
     }
   });
