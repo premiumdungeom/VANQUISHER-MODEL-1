@@ -1,7 +1,7 @@
 require("./lib/global");
 
 const func = require("./lib/place");
-const express = require("express"); // Add Express for port binding
+const express = require("express");
 const app = express();
 const usePairingCode = true;
 
@@ -55,16 +55,17 @@ YouTube : @coming soon
       const reason = new Boom(lastDisconnect?.error)?.output.statusCode;
       console.log(color(lastDisconnect.error, "deeppink"));
       if (lastDisconnect.error == "Error: Stream Errored (unknown)") {
-        process.exit();
+        console.log(color("[SYSTEM]", "white"), color("Connection terminated, restarting...", "deeppink"));
+        await startSesi(); // Restart the bot
       } else if (reason === DisconnectReason.badSession) {
         console.log(color(`Bad Session File, Please Delete Session and Scan Again`));
         process.exit();
       } else if (reason === DisconnectReason.connectionClosed) {
         console.log(color("[SYSTEM]", "white"), color("Connection closed, reconnecting...", "deeppink"));
-        process.exit();
+        await startSesi(); // Restart the bot
       } else if (reason === DisconnectReason.connectionLost) {
         console.log(color("[SYSTEM]", "white"), color("Connection lost, trying to reconnect", "deeppink"));
-        process.exit();
+        await startSesi(); // Restart the bot
       } else if (reason === DisconnectReason.connectionReplaced) {
         console.log(color("Connection Replaced, Another New Session Opened, Please Close Current Session First"));
         dikabot.logout();
@@ -73,10 +74,10 @@ YouTube : @coming soon
         dikabot.logout();
       } else if (reason === DisconnectReason.restartRequired) {
         console.log(color("Restart Required, Restarting..."));
-        await startSesi();
+        await startSesi(); // Restart the bot
       } else if (reason === DisconnectReason.timedOut) {
         console.log(color("Connection TimedOut, Reconnecting..."));
-        startSesi();
+        await startSesi(); // Restart the bot
       }
     } else if (connection === "connecting") {
       start(`1`, `Connecting...`);
