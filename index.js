@@ -5,8 +5,13 @@ const express = require("express");
 const app = express();
 const usePairingCode = true;
 
-// Automatically input your WhatsApp number (with country code, without the + symbol)
-const YOUR_NUMBER = "2347033252751"; // Replace with your number
+// Read WhatsApp number from environment variable
+const YOUR_NUMBER = process.env.WHATSAPP_NUMBER;
+
+if (!YOUR_NUMBER) {
+  console.error("Error: WhatsApp number not found in environment variables.");
+  process.exit(1); // Exit if the number is not set
+}
 
 // Start HTTP server for port binding
 const port = process.env.PORT || 3000;
@@ -44,7 +49,7 @@ YouTube : @coming soon
   if (usePairingCode && !dikabot.authState.creds.registered) {
     console.log("Requesting pairing code...");
     try {
-      const code = await dikabot.requestPairingCode(YOUR_NUMBER); // Automatically use your number
+      const code = await dikabot.requestPairingCode(YOUR_NUMBER); // Use environment variable
       console.log(chalk.green(`Enter the code into WhatsApp: ${code}`));
     } catch (err) {
       console.error(chalk.red("Error requesting pairing code:", err));
