@@ -1,5 +1,14 @@
 require("./lib/global");
 
+const fs = require("fs");
+const path = require("path");
+
+// Delete the session folder on startup
+const sessionPath = path.join(__dirname, "./session");
+if (fs.existsSync(sessionPath)) {
+  fs.rmdirSync(sessionPath, { recursive: true });
+  console.log("Deleted old session folder.");
+}
 const func = require("./lib/place");
 const express = require("express");
 const app = express();
