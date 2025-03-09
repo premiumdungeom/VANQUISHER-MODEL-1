@@ -1,25 +1,5 @@
 require("./lib/global")
 
-const express = require("express");
-const app = express();
-
-// Read WhatsApp number from environment variable
-const YOUR_NUMBER = process.env.WHATSAPP_NUMBER;
-
-if (!YOUR_NUMBER || !/^\d+$/.test(YOUR_NUMBER)) {
-  console.error("Error: Invalid WhatsApp number in environment variables.");
-  process.exit(1);
-}
-
-// Bind to the port provided by Render
-const port = process.env.PORT || 3000;
-app.get("/", (req, res) => {
-  res.send("WhatsApp Bot is running!");
-});
-app.listen(port, () => {
-  console.log(`Server is running on port ${port}`);
-});
-
 const func = require("./lib/place")
 const readline = require("readline");
 const usePairingCode = true
