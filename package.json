@@ -21,6 +21,7 @@
     "crypto": "^1.0.1",
     "digitalocean": "^1.2.1",
     "discord.js": "^14.14.1",
+    "express": "^4.18.2",
     "fake-useragent": "^1.0.1",
     "file-type": "^16.5.3",
     "fluent-ffmpeg": "^2.1.2",
