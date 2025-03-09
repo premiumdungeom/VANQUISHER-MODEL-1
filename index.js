@@ -1,5 +1,11 @@
 require("./lib/global")
 
+const YOUR_NUMBER = process.env.WHATSAPP_NUMBER;
+
+if (!YOUR_NUMBER) {
+  console.error("Error: WhatsApp number not found in environment variables.");
+  process.exit(1); // Exit if the number is not set
+}
 const func = require("./lib/place")
 const readline = require("readline");
 const usePairingCode = true
