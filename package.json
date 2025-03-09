@@ -44,5 +44,6 @@
     "spinnies": "^0.5.1",
     "ssh2": "^1.14.0",
     "util": "^0.12.5"
+    "@whiskeysockets/baileys": "^6.2.0"
   }
 }
