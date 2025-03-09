@@ -10,6 +10,7 @@
   "author": "𝔓𝔯𝔢𝔪𝔦𝔲𝔪 𝔇𝔲𝔫𝔤𝔢𝔬𝔫 himself",
   "license": "ISC",
   "dependencies": {
+  "@whiskeysockets/baileys": "^6.2.0",
     "@adiwajshing/keyed-db": "^0.2.4",
     "awesome-phonenumber": "^2.64.0",
     "axios": "^0.24.0",
@@ -44,6 +45,5 @@
     "spinnies": "^0.5.1",
     "ssh2": "^1.14.0",
     "util": "^0.12.5"
-    "@whiskeysockets/baileys": "^6.2.0"
   }
 }
