@@ -14,7 +14,7 @@
     "awesome-phonenumber": "^2.64.0",
     "axios": "^0.24.0",
     "baileys": "npm:@whiskeysockets/baileys@^6.7.7",
-    "canvas-hikki": "github:KirBotz/canvas-hikki",
+    "jimp": "^0.16.1",
     "chalk": "^4.1.2",
     "cheerio": "^1.0.0-rc.10",
     "child_process": "^1.0.2",
